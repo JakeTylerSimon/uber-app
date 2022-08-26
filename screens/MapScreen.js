@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, KeyboardAvoidingView, ScrollView } from 'react-native'
 import React from 'react'
 import tw from 'tailwind-react-native-classnames'
 import Map from '../components/Map'
@@ -10,30 +10,36 @@ const MapScreen = () => {
     const Stack = createStackNavigator()
 ;
   return (
-    <View>
-      <View style={tw`h-1/2`}>
-        <Map />
-      </View>
+    <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior="padding"
+        enabled= {true}
+    >
+        <View>
+            <View style={tw`h-1/2`}>
+                <Map />
+            </View>
 
-      <View style={tw`h-1/2`}>
-        <Stack.Navigator>
-            <Stack.Screen
-                name='NavigateCard'
-                component={NavigateCard}
-                options={{ 
-                    headerShown: false,
-                 }}
-            />
-            <Stack.Screen
-                name='RideOptionCard'
-                component={RideOptionsCard}
-                options={{ 
-                    headerShown: false,
-                 }}
-            />
-        </Stack.Navigator>
-      </View>
-    </View>
+            <View style={tw`h-1/2`}>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name='NavigateCard'
+                        component={NavigateCard}
+                        options={{ 
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name='RideOptionCard'
+                        component={RideOptionsCard}
+                        options={{ 
+                            headerShown: false,
+                        }}
+                    />
+                </Stack.Navigator>
+            </View>
+        </View>
+    </KeyboardAvoidingView>
   )
 }
 
